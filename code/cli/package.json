@@ -1,0 +1,22 @@
+{
+  "name": "@gz/lg-homework-cli",
+  "version": "1.0.0",
+  "description": "homework project cli",
+  "main": "index.js",
+  "bin": {
+    "homework": "bin/cli.js"
+  },
+  "dependencies": {
+    "chalk": "4.1.0",
+    "common-bin": "2.9.0",
+    "inquirer": "7.3.0",
+    "shelljs": "0.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
