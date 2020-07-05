@@ -10,10 +10,12 @@
     "chalk": "4.1.0",
     "common-bin": "2.9.0",
     "inquirer": "7.3.0",
+    "plop": "^2.7.1",
     "shelljs": "0.8.4"
   },
   "devDependencies": {},
   "scripts": {
+    "plop": "plop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

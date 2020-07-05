@@ -105,6 +105,13 @@ module.exports = function (grunt) {
           // interrupt: true,
         },
       },
+      assets: {
+        files: ["src/assets/font/**", "src/assets/images/**", "public/**"],
+        tasks: ["copy"],
+        options: {
+          // interrupt: true,
+        },
+      },
     },
 
   });

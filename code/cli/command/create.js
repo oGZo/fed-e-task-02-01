@@ -5,6 +5,12 @@ const fs = require("fs");
 const chalk = require("chalk");
 const path = require("path");
 const { execSync } = require("child_process");
+const nodePlop = require('node-plop');
+// load an instance of plop from a plopfile
+const plop = nodePlop(path.join(__dirname, `../plopfile.js`));
+// get a generator by name
+const basicAdd = plop.getGenerator('controller');
+
 const options = {
   name: {
     type: "string",
@@ -12,8 +18,7 @@ const options = {
   },
 };
 
-// 文件列表
-const files = ["README.md", "code/app.js", "notes/学习笔记.md"];
+
 // 获取命令行输入名称
 const getName = () => {
   return inquirer
@@ -52,20 +57,12 @@ class CurrentCommand extends Command {
         ])
         .then((res) => res.flag);
       if (!flag) return;
-    } else {
-      shelljs.mkdir(name);
     }
-    files.forEach((file) => {
-      let objFile = `${name}/${file}`;
-      let dir = path.dirname(objFile);
-      if (!fs.existsSync(dir)) {
-        shelljs.mkdir("-p", dir);
-      }
-      shelljs.touch(objFile);
-    });
-    shelljs.cd(name);
-    execSync("npm init -y");
-    console.log(`${chalk.yellow(`${name} project initialization complete`)}`);
+    basicAdd.runActions({name}).then(() => {
+      shelljs.cd(name);
+      execSync("npm init -y");
+      console.log(`${chalk.yellow(`${name} project initialization complete`)}`);
+    })
   }
 
   get description() {
